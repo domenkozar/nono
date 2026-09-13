@@ -1128,7 +1128,8 @@ impl CapabilitySet {
     /// localhost, proxy, or platform-rule grants. It has no enforcement effect
     /// in [`NetworkMode::AllowAll`] or on Linux, and is not a general DNS
     /// filter. Callers requiring strict isolation must also avoid granting
-    /// other paths to a resolver. The setting survives network-mode changes.
+    /// other paths to a resolver. The setting survives network-mode changes
+    /// and [`crate::SandboxState`] round trips.
     #[must_use]
     pub fn block_dns(mut self) -> Self {
         self.dns_blocked = true;
